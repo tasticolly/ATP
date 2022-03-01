@@ -14,9 +14,10 @@ shift;;
 esac
 shift
 done
-mkdir $BACKUP_FOLDER/backup_folder
 ORIGIN_DIR=$(pwd)
-cd $BACKUP_FOLDER/backup_folder
+cd $BACKUP_FOLDER
+mkdir backup_folder
+cd backup_folder
 BACKUP_FOLDER=$(pwd)
 cd $ORIGIN_DIR/$INPUT_FOLDER
 for x in $(find . -name "*.$EXTENSION") #| xargs mkdir -p && xargs cp $BACKUP_FOLDER/backup_folder
@@ -26,7 +27,3 @@ cp $x $BACKUP_FOLDER/$x
 done
 tar -czf $BACKUP_FOLDER/../$BACKUP_ARCHIVE_NAME $BACKUP_FOLDER 2>"/dev/null"
 echo "done"
-
-
-
-
