@@ -19,7 +19,8 @@ cd $BACKUP_FOLDER
 mkdir backup_folder
 cd backup_folder
 BACKUP_FOLDER=$(pwd)
-cd $ORIGIN_DIR/$INPUT_FOLDER
+cd $ORIGIN_DIR
+cd $INPUT_FOLDER
 for x in $(find . -name "*.$EXTENSION") #| xargs mkdir -p && xargs cp $BACKUP_FOLDER/backup_folder
 do
 mkdir -p $BACKUP_FOLDER/$(dirname $x)
