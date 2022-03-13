@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.0)
+project(library)
+set(SOURCE_LIB lib.h)
+set(SOURCE_EXE lib.cpp)
+add_library(libr SHARED ${SOURCE_LIB} ${SOURCE_EXE})
