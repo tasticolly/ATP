@@ -1,12 +1,12 @@
-cmake_minimum_required(VERSION 3.0)
+lcmake_minimum_required(VERSION 3.0)
 project(my_proj)
 
 
 add_custom_command( 
   OUTPUT ${PROJECT_SOURCE_DIR}/A/index.h
-  COMMAND python3 ${PROJECT_SOURCE_DIR}/A/prepearing.py
+  COMMAND python3 ${PROJECT_SOURCE_DIR}/A/preparing.py
   WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/A/
-  DEPENDS ${PROJECT_SOURCE_DIR}/A/prepearing.py
+  DEPENDS ${PROJECT_SOURCE_DIR}/A/preparing.py
 )
 
 include_directories(${PROJECT_SOURCE_DIR})
