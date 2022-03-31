@@ -9,7 +9,7 @@ add_custom_command(
   DEPENDS ${PROJECT_SOURCE_DIR}/A/preparing.py
 )
 
-include_directories(${PROJECT_SOURCE_DIR})
+target_include_directories(C ${PROJECT_SOURCE_DIR})
 
 set(HEADERS A/index.h C/main.h)
 set(SOURCES C/main.cpp)
