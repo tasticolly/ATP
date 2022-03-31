@@ -9,7 +9,7 @@ add_custom_command(
   DEPENDS ${PROJECT_SOURCE_DIR}/A/preparing.py
 )
 
-target_include_directories(C ${PROJECT_SOURCE_DIR})
+
 
 set(HEADERS A/index.h C/main.h)
 set(SOURCES C/main.cpp)
@@ -18,8 +18,10 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
 
 add_executable(C ${SOURCES} ${HEADERS})
+
 add_custom_target(RunGenerator DEPENDS ${PROJECT_SOURCE_DIR}/A/index.h)
 add_dependencies( C RunGenerator )
+target_include_directories(C PUBLIC ${PROJECT_SOURCE_DIR})
 add_subdirectory(B)
 target_link_libraries(C libr)
 
