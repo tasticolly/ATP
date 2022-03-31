@@ -24,7 +24,6 @@ include_directories(include)
 
 
 
-
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${SimpleLibrary_SOURCE_DIR}/bin)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${SimpleLibrary_SOURCE_DIR}/lib)
 
@@ -38,14 +37,7 @@ add_executable(MainLib main_lib.cpp)
 
 target_link_libraries(MainLib buffer)
 
-install(TARGETS MainLib Main 
-    RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
-    LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib 
-    ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
-)
-
-install(
-    DIRECTORY ${CMAKE_SOURCE_DIR}/include
-    DESTINATION ${CMAKE_INSTALL_PREFIX}
-)
+install(TARGETS Main MainLib buffer
+ RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin 
+ LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
         
