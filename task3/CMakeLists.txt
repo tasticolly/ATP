@@ -13,19 +13,16 @@ if (CMAKE_INSTALL_PREFIX)
     add_definitions(-DCMAKE_INSTALL_PREFIX)
 endif (CMAKE_INSTALL_PREFIX)
 
-if (${ARM_BUILD})
-    set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_RPATH}:${CMAKE_INSTALL_PREFIX}/lib")
-    set(CMAKE_C_COMPILER ${TOOLCHAIN}/aarch64-linux-gnu-gcc)
-    set(CMAKE_CXX_COMPILER ${TOOLCHAIN}/aarch64-linux-gnu-g++)
-    install(TARGETS Main MainLib buffer
-            RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin 
-            LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
-            
-    install(
-    DIRECTORY ${CMAKE_SOURCE_DIR}/include
-    DESTINATION ${CMAKE_INSTALL_PREFIX}
-)
-endif
+set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_RPATH}:${CMAKE_INSTALL_PREFIX}/lib")
+set(CMAKE_C_COMPILER ${TOOLCHAIN}/aarch64-linux-gnu-gcc)
+set(CMAKE_CXX_COMPILER ${TOOLCHAIN}/aarch64-linux-gnu-g++)
+install(TARGETS Main MainLib buffer
+        RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin 
+        LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
+        
+install(
+DIRECTORY ${CMAKE_SOURCE_DIR}/include
+DESTINATION ${CMAKE_INSTALL_PREFIX})
 cmake_minimum_required(VERSION 3.0)
 
 project(SimpleLibrary)
