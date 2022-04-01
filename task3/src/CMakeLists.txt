@@ -1,3 +1,3 @@
 add_library(buffer SHARED buffer.cpp)
-install(TARGET buffer 
+install(TARGETS buffer 
 LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib})

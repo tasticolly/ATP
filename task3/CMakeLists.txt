@@ -1,3 +1,4 @@
+cmake_minimum_required(VERSION 3.10)
 option(ARM_BUILD "1" ON)
 if (ARM_BUILD)
     add_definitions(-DARM_BUILD)
@@ -18,7 +19,7 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${SimpleLibrary_SOURCE_DIR}/lib)
 set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_RPATH}:${CMAKE_INSTALL_PREFIX}/lib")
 set(CMAKE_C_COMPILER ${TOOLCHAIN}/aarch64-linux-gnu-gcc)
 set(CMAKE_CXX_COMPILER ${TOOLCHAIN}/aarch64-linux-gnu-g++)
-
+cmake_minimum_required(VERSION 3.18)
 project(SimpleLibrary)
 include_directories(include)
 
