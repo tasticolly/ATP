@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.18)
 option(ARM_BUILD "1" ON)
 if (ARM_BUILD)
     add_definitions(-DARM_BUILD)
