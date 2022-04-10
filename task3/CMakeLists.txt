@@ -20,8 +20,8 @@ set(CMAKE_CXX_COMPILER ${TOOLCHAIN}/aarch64-linux-gnu-g++)
 cmake_minimum_required(VERSION 3.0)
 
 project(SimpleLibrary)
-include_directories(include)
-
+target_include_directories(Main PUBLIC include)
+target_include_directories(MainLib PUBLIC include)
 
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${SimpleLibrary_SOURCE_DIR}/bin)
