@@ -20,8 +20,7 @@ set(CMAKE_CXX_COMPILER ${TOOLCHAIN}/aarch64-linux-gnu-g++)
 cmake_minimum_required(VERSION 3.0)
 
 project(SimpleLibrary)
-target_include_directories(Main PUBLIC include)
-target_include_directories(MainLib PUBLIC include)
+
 
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${SimpleLibrary_SOURCE_DIR}/bin)
@@ -36,6 +35,9 @@ add_executable(MainLib main_lib.cpp)
 
 
 target_link_libraries(MainLib buffer)
+
+target_include_directories(Main PUBLIC include)
+target_include_directories(MainLib PUBLIC include)
 
 install(TARGETS Main MainLib buffer
  RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin 
