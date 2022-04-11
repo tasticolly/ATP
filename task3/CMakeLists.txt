@@ -1,4 +1,3 @@
-
 option(ARM_BUILD "1" ON)
 if (ARM_BUILD)
     add_definitions(-DARM_BUILD)
@@ -21,12 +20,15 @@ set(CMAKE_CXX_COMPILER ${TOOLCHAIN}/aarch64-linux-gnu-g++)
 cmake_minimum_required(VERSION 3.0)
 
 project(SimpleLibrary)
+include_directories(include)
+
+
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${SimpleLibrary_SOURCE_DIR}/bin)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${SimpleLibrary_SOURCE_DIR}/lib)
 
 
-include_directories(include)
+
 add_subdirectory(src)
 add_executable(Main main.cpp)
 add_executable(MainLib main_lib.cpp)
@@ -34,10 +36,6 @@ add_executable(MainLib main_lib.cpp)
 
 
 target_link_libraries(MainLib buffer)
-
-
-#target_include_directories(Main PUBLIC inclde)
-#target_include_directories(MainLib PUBLIC include)
 
 install(TARGETS Main MainLib buffer
  RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin 
@@ -51,4 +49,3 @@ install(TARGETS Main MainLib buffer
  
  
        
-#target_include_directories(Main PUBLIC include)
