@@ -1,3 +1,4 @@
+
 option(ARM_BUILD "1" ON)
 if (ARM_BUILD)
     add_definitions(-DARM_BUILD)
@@ -36,9 +37,8 @@ add_executable(MainLib main_lib.cpp)
 
 target_link_libraries(MainLib buffer)
 
-target_include_directories(Main PUBLIC include)
-target_include_directories(MainLib PUBLIC include)
-
+target_include_directories(buffer PUBLIC include)
+target_include_directories(Main PUBLIC inclde)
 install(TARGETS Main MainLib buffer
  RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin 
  LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
@@ -51,3 +51,4 @@ install(TARGETS Main MainLib buffer
  
  
        
+#target_include_directories(Main PUBLIC include)
