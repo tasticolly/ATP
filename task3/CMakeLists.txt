@@ -22,8 +22,6 @@ cmake_minimum_required(VERSION 3.0)
 
 project(SimpleLibrary)
 
-
-
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${SimpleLibrary_SOURCE_DIR}/bin)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${SimpleLibrary_SOURCE_DIR}/lib)
 
@@ -37,9 +35,9 @@ add_executable(MainLib main_lib.cpp)
 
 target_link_libraries(MainLib buffer)
 
-target_include_directories(buffer PUBLIC include)
-target_include_directories(Main PUBLIC inclde)
-target_include_directories(MainLib PUBLIC include)
+include_directories(include)
+#target_include_directories(Main PUBLIC inclde)
+#target_include_directories(MainLib PUBLIC include)
 
 install(TARGETS Main MainLib buffer
  RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin 
