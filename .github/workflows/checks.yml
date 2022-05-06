@@ -1,0 +1,56 @@
+name: Code_checks
+
+on:
+    push:
+        branches: [ task6 ]
+    pull_request:
+        branches: [ task6 ]
+        
+        
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - name: Clone_gtest
+              run: |
+                mkdir ${{github.workspace}}/task6/task-ci/3rdparty
+                git clone https://github.com/google/googletest.git ${{github.workspace}}/task6/task-ci/3rdparty
+           
+              
+            - name: Configure_CMake
+              run: |
+                cd ${{github.workspace}}/task6/task-ci
+                cmake -B build
+                
+            - name: Build
+              run: cmake --build ${{github.workspace}}/task6/task-ci/build
+              
+            - uses: akhtyamovpavel/ActionGtestReport@v0.0.9
+              with:
+                exec-path:  ${{github.workspace}}/task6/task-ci/bin/CTestExe
+                report-path: ${{github.workspace}}/task6/report.xml
+                working-directory: ${{github.workspace}}/task6
+            
+
+            - name: Test    
+              uses: actions/upload-artifact@v3
+              with:
+                name: test-report
+                path: ${{github.workspace}}/task6/report.xml
+              
+              
+            - name: UploadArtifacts
+              uses: actions/upload-artifact@v3
+              with:
+                name: Distributive
+                path: |
+                    ${{github.workspace}}/task6/task-ci/bin
+                    ${{github.workspace}}/task6/task-ci/lib
+              
+                    
+                  
+             
+                
+              
+              
