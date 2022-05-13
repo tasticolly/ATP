@@ -9,8 +9,8 @@ std::string nameFile;
 std::string nameDir;
 std::string nameChildDir;
 
-void make_tmp_dir(){
-  nameDir = std::tmpnam(nullptr);
+void make_tmp_dir() {
+  nameDir = std::string(fs::temp_directory_path()) + "/testing_ATP";
   nameFile = nameDir + "/file.txt";
   nameChildDir = nameDir + "/son_dir";
   fs::create_directory(nameDir);
@@ -18,18 +18,18 @@ void make_tmp_dir(){
   std::ofstream File(nameFile);
 }
 
-void delete_tmp_dir(){
+void delete_tmp_dir() {
   fs::remove(nameFile);
   fs::remove(nameChildDir);
   fs::remove(nameDir);
 }
 
-TEST(TreeCase, UnexistablePath){
-  EXPECT_ANY_THROW(GetTree("/aboba",true));
+TEST(TreeCase, UnexistablePath) {
+  EXPECT_ANY_THROW(GetTree("/aboba", true));
 }
-TEST(TreeCase,NotDir){
+TEST(TreeCase, NotDir) {
   make_tmp_dir();
-  EXPECT_ANY_THROW(GetTree(nameFile,true));
+  EXPECT_ANY_THROW(GetTree(nameFile, true));
   delete_tmp_dir();
 }
 TEST(TreeCase, OperatorEqual) {
@@ -39,7 +39,7 @@ TEST(TreeCase, OperatorEqual) {
   EXPECT_FALSE(GetTree(nameDir, false) == correct_answer);
   delete_tmp_dir();
 }
-TEST(TreeCase, NodeFilter){
+TEST(TreeCase, NodeFilter) {
   make_tmp_dir();
   FilterEmptyNodes(GetTree(nameDir, false), nameDir);
   delete_tmp_dir();
