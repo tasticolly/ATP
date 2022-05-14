@@ -1,0 +1,19 @@
+name: Code_checks
+
+on:
+    push:
+        branches: [ task6 ]
+    pull_request:
+        branches: [ task6 ]
+        
+        
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - name: Configure_CMake
+              run: cmake -B build
+            - name: Build
+              run: cmake --build build
+              
